@@ -13,3 +13,10 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+# Ignore all storage content by default
+/storage/*
+
+# Allow these specific directories or files in storage
+!/storage/.gitignore
+!/storage/images
