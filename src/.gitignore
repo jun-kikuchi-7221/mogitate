@@ -16,7 +16,4 @@ yarn-error.log
 
 # Ignore all storage content by default
 /storage/*
-
-# Allow these specific directories or files in storage
-!/storage/.gitignore
-!/storage/images
+!/storage/app/public/
