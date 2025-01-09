@@ -10,9 +10,9 @@ class ProductController extends Controller
     public function index ()
     {
         // データベースから商品を取得（例）
-        $products = Product::all();  // すべての商品を取得する場合
+        // $products = Product::all();  // すべての商品を取得する場合
 
-        // paginate(10) で、1ページあたり10件の商品を取得
+        // paginate(6) で、1ページあたり6件の商品を取得
         $products = Product::paginate(6);
 
     // 取得した商品をビューに渡す
