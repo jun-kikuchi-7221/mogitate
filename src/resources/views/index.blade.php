@@ -8,80 +8,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Inika&display=swap" rel="stylesheet">
 @endsection
 
-@section('title', '商品一覧')
-
 @section('content')
-    <div class="container">
-        <!-- 商品一覧タイトルと追加ボタン -->
-        <div class="header-row">
-            <h1>商品一覧</h1>
-            <button class="add-product">+ 商品を追加</button>
+<div class="container">
+    <!-- 商品一覧タイトルと追加ボタン -->
+    <div class="header-row">
+        <h1>商品一覧</h1>
+        <a href="{{ route('products.create') }}" class="add-product-button">+ 商品を追加</a>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <!-- 検索フォーム -->
+        <div class="search-section">
+            <form action="{{ route('products.search') }}" method="GET">
+                <div class="search-item">
+                    <label for="search">商品名で検索</label>
+                    <input type="text" id="search" name="search" placeholder="商品名を入力" value="{{ request('search') }}">
+                </div>
+                <div class="search-item">
+                    <label for="price">価格順で表示</label>
+                    <select id="price" name="sort">
+                        <option value="">価格で並べ替え</option>
+                        <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>価格の安い順</option>
+                        <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>価格の高い順</option>
+                    </select>
+                </div>
+                <div class="search-item">
+                    <button type="submit" class="search-button">検索</button>
+                </div>
+            </form>
         </div>
 
-        <!-- サーチ項目と商品一覧の横並びレイアウト -->
-        <div class="main-content">
-            <!-- 検索フォーム -->
-            <div class="search-section">
-                <form class="search-form">
-                    <div class="search-item">
-                        <label for="search">商品名で検索</label>
-                        <input type="text" id="search" placeholder="商品名を入力">
-                    </div>
-                    <div class="search-item">
-                        <label for="price">価格順で表示</label>
-                        <select id="price">
-                            <option value="asc">価格の安い順</option>
-                            <option value="desc">価格の高い順</option>
-                        </select>
-                    </div>
-                    <div class="search-item">
-                        <button type="submit">検索</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- 商品一覧 -->
-            <div class="product-list">
+        <!-- 商品一覧 -->
+        <div class="product-list">
+            @foreach ($products as $product)
                 <div class="product">
-                    <img src="/storage/images/kiwi.png" alt="キウイ">
-                    <h2>キウイ</h2>
-                    <p>¥800</p>
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    <h2>{{ $product->name }}</h2>
+                    <p>¥{{ number_format($product->price) }}</p>
                 </div>
-                <div class="product">
-                    <img src="/storage/images/strawberry.png" alt="ストロベリー">
-                    <h2>ストロベリー</h2>
-                    <p>¥1200</p>
-                </div>
-                <div class="product">
-                    <img src="/storage/images/orange.png" alt="オレンジ">
-                    <h2>オレンジ</h2>
-                    <p>¥850</p>
-                </div>
-                <div class="product">
-                    <img src="/storage/images/watermelon.png" alt="スイカ">
-                    <h2>スイカ</h2>
-                    <p>¥700</p>
-                </div>
-                <div class="product">
-                    <img src="/storage/images/peach.png" alt="ピーチ">
-                    <h2>ピーチ</h2>
-                    <p>¥1000</p>
-                </div>
-                <div class="product">
-                    <img src="/storage/images/muscat.png" alt="シャインマスカット">
-                    <h2>シャインマスカット</h2>
-                    <p>¥1400</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ページネーション -->
-        <div class="pagination">
-            <button>&lt;</button>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <button>&gt;</button>
+            @endforeach
         </div>
     </div>
+
+    <!-- ページネーション -->
+    <div class="pagination">
+        {{ $products->withQueryString()->links('pagination::bootstrap-4') }}
+    </div>
+</div>
 @endsection
