@@ -1,92 +1,315 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* 全体の背景色を設定 */
+body {
+    background-color: #F8F8F8;
+    margin: 0;
+    /* ページ全体の余白を削除 */
+    padding: 0;
+    font-family: Hiragino Kaku Gothic Pro;
+    /* 任意のフォントを指定 */
 }
 
+/* コンテナ */
+.container {
+    width: 95%;
+    max-width: 1512px;
+    margin: 0 auto;
+}
+
+/* タイトル行と追加ボタン */
 .header-row {
     display: flex;
     justify-content: space-between;
+    /* タイトルとボタンを左右に配置 */
     align-items: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 2rem;
+    /* margin-bottom: 20px; */
 }
 
 .add-product-button {
-    background-color: #FFA929;
-    color: white;
+    background-color: #f9a825;
+    color: #4B4B4B;
     padding: 10px 20px;
-    text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
+.add-product-button:hover {
+    background-color: #f57c00;
+}
+
+/* メインコンテンツ */
 .main-content {
     display: flex;
+    align-items: flex-start;
+    /* 上端を揃える */
     gap: 20px;
 }
 
+
+/* 検索セクションのレイアウト */
 .search-section {
-    flex: 1;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    /* 縦並びに変更 */
+    gap: 15px;
+    /* 各要素間の間隔を設定 */
+    max-width: 240px;
+    /* セクションの幅を制限 */
 }
 
-.search-item {
-    margin-bottom: 15px;
+/* 共通スタイル: デフォルトのフォント色 */
+input[type="text"],
+select {
+    color: #000;
+    /* 初期状態の文字色（黒） */
 }
 
-.search-button {
-    background-color: #FFD700;
-    color: white;
+/* input: 入力があった場合のフォント色 */
+input[type="text"]:not(:placeholder-shown) {
+    color: #007bff;
+    /* 入力がある場合の文字色（青） */
+}
+
+/* select: フォーカスまたは選択がある場合のフォント色 */
+select:focus,
+select:valid {
+    color: #4B4B4B;
+    /* 選択された場合の文字色（青） */
+}
+
+/* プレースホルダーや初期値のスタイル */
+input::placeholder {
+    color: #aaa;
+    /* プレースホルダー文字色（薄い灰色） */
+}
+
+select option[value=""] {
+    color: #aaa;
+    /* 初期の未選択状態の文字色 */
+}
+
+
+
+
+
+/* input ボックス */
+.search-section input[type="text"] {
+    width: 240px;
+    /* 入力ボックスの幅を240pxに設定 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    /* 両端を半円形にする */
+    outline: none;
+    font-size: 14px;
+    color: #E0DFDE;
+    margin-bottom: 20px;
+}
+
+/* 検索ボタン */
+.search-section .search-button {
+    width: 240px;
+    padding: 10px;
+    background-color: #fbc02d;
+    color: #4B4B4B;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
+    margin-bottom: 30px;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.product-list {
-    flex: 3;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+.search-section .search-button:hover {
+    background-color: #f57c00;
 }
 
-.product {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 15px;
-}
-
-.product img {
-    max-width: 100%;
-    border-radius: 5px;
+/* ラベルとセレクトボックス */
+.search-section label {
+    font-family: Hiragino Kaku Gothic Pro;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4B4B4B;
     margin-bottom: 10px;
 }
 
+/* 並び替えドロップダウン */
+.search-select{
+    margin-top: 20px;
+    width: 240px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #E0DFDE;
+    margin-bottom: 10px;
+}
+
+select,
+option {
+    color: inherit;
+    /* 親要素の色を継承 */
+    background-color: inherit;
+    /* 背景色を継承 */
+}
+
+/* デフォルトのプレースホルダー用オプション */
+.placeholder-option {
+    color: #E0DFDE;
+    /* 薄い色 */
+}
+
+/* 通常のオプション */
+.normal-option {
+    color: #4B4B4B;
+    /* 濃い色 */
+}
+
+/* <select>のスタイルを上書き（ブラウザの影響を排除） */
+select {
+    color: inherit;
+    /* 全体的な文字色を継承 */
+}
+
+/* タグ表示 */
+.filter-tags {
+    margin: 10px 0;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    /* background-color: #fbc02d; */
+    color: #4B4B4B;
+    padding: 6px 10px;
+    border: 1px solid #F5C800;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 300;
+    margin-right: 10px;
+}
+
+.tag a {
+    color: #F5C800;
+    margin-left: 10px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.tag a:hover {
+    color: #444;
+}
+
+/* 商品一覧のグリッドレイアウト */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 横3列 */
+    gap: 10px;
+    /* カード間のスペース */
+    justify-content: center;
+    /* padding: 20px; */
+    align-items: start;
+    /* 上端を揃える */
+    position: relative;
+        /* ページネーションの位置調整のために */
+}
+
+/* 商品カード */
+.product {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    /* カードの角丸と画像を一致させる */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    text-align: center;
+    min-height: 360px;
+        /* 最小の高さを設定 */
+    min-width: 320px;
+    height: 100%;
+        /* 高さをカード内で調整 */
+    width: 100%;
+        /* 幅を親に合わせる */
+
+}
+
+/* 商品画像 */
+.product img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    /* 画像をカード内で全体にフィットさせる */
+    margin: 0;
+    /* 余白をなくす */
+}
+
+/* 商品情報 */
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-top: auto;
+    /* 余分なスペースを埋める */
+}
+
+.product-info h2 {
+    font-size: 24px;
+    /* 商品名のフォントサイズ */
+    font-weight: 400;
+    margin: 0;
+    color: #4B4B4B;
+}
+
+.product-info p {
+    font-size: 24px;
+    /* 価格のフォントサイズ */
+    font-weight: 400;
+    margin: 0;
+    color: #4B4B4B;
+}
+
+/* ページネーション */
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    gap: 10px;
 }
 
-.pagination span,
-.pagination a {
+.pagination .page-item {
+    list-style: none;
+}
+
+.pagination .page-item a,
+.pagination .page-item span {
+    display: inline-block;
+    padding: 5px 15px;
     margin: 0 5px;
-    padding: 8px 12px;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-size: 18px;
+    background-color: white;
+    color: #4B4B4B;
+    border: 1px solid #ddd;
+    border-radius: 20px;
     text-decoration: none;
-    color: #333;
-    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.pagination span.current {
-    background-color: #FFA929;
+.pagination .page-item.active span {
+    background-color: #f9a825;
     color: white;
+    border-color: #f9a825;
+}
+
+.pagination .page-item a:hover {
+    background-color: #f57c00;
+    color: white;
+    border-color: #f57c00;
 }

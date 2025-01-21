@@ -21,8 +21,9 @@ class RegisterController extends Controller
 
         // 商品画像の保存
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/images');
-            $validated['image'] = str_replace('public/', 'storage/', $path);
+            $path = $request->file('image')->store('images', 'public');
+            // $validated['image'] = str_replace('public/', 'storage/', $path);
+            $validated['image'] = $path; // ここでそのまま保存
         }
 
         // データベースへ保存

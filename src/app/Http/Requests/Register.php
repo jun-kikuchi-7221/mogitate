@@ -44,7 +44,7 @@ class Register extends FormRequest
             'description.required' => '商品説明を入力してください',
             'description.max' => '120文字以内で入力してください',
             'image.required' => '商品画像を登録してください',
-            'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
+            'image2.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
         ];
     }
     

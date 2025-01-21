@@ -9,6 +9,7 @@
 
 .header {
     border: 1px solid #f4f4f4;
+    background: white;
     /* display: flex;
     justify-content: center;
     /* 水平方向に中央揃え */
@@ -16,7 +17,7 @@
     /* 垂直方向に中央揃え */
     height: 53px;
     /* headerの高さを指定 */
-    margin-left: 20px;
+    padding-left: 40px;
 
 
 }
@@ -39,20 +40,3 @@
     font-size: 30px;
     font-weight: 500;
 }
-
-.header-nav {
-    display: flex;
-    margin-left: 300px;
-}
-
-/* .header-nav__button-submit {
-    padding: 5px;
-    width: 100px;
-    height: 34px;
-    border: 1px solid #D9C6B5;
-    background: #F0F0F099;
-    font-family: Inika;
-    font-size: 20px;
-    color: #D9C6B5;
-    cursor: pointer;
-} */

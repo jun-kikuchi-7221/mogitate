@@ -1,0 +1,271 @@
+/* 全体の背景色 */
+body {
+    background-color: #F8F8F8;
+    font-family: Hiragino Kaku Gothic Pro;
+}
+
+/* コンテナ */
+.container {
+    max-width: 760px;
+    min-height: 700px;
+    margin: 50px auto;
+    /* padding: 20px; */
+    background-color: #F8F8F8;
+    /* border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+}
+
+/* 見出し */
+.container h1 {
+    margin-left: 0;
+        /* 左側のマージンをリセット */
+    text-align: left;
+        /* 左揃えにする */
+    /* padding-left: 10px; */
+        /* 適宜調整して、入力欄と揃える */
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+        /* フォントを統一 */
+}
+
+/* ラベル */
+label {
+    display: block;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #4B4B4B;
+}
+
+.required-label {
+    display: inline-block;
+    background-color: #FD0707;;
+    /* 赤色 */
+    color: #FFFFFF;
+    /* 白文字 */
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 2px 6px;
+    /* 四角のサイズ調整 */
+    /* border-radius: 4px; */
+    /* 少し角を丸める */
+    vertical-align: middle;
+    /* テキストとの位置調整 */
+}
+
+.text-muted {
+    color: #FF0000;
+    /* 赤色 */
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+    /* フォント指定 */
+    font-size: 12px;
+    /* フォントサイズ */
+    font-weight: 300;
+    /* フォントウェイト */
+    vertical-align: middle;
+    /* 他のテキストとの揃え調整 */
+}
+
+/* エラー表示用コンテナ */
+.error-container {
+    min-height: 20px;
+    /* エラーメッセージの高さを固定 */
+}
+
+/* エラーメッセージのスタイル */
+.text-danger {
+    font-size: 14px;
+    color: #dc3545;
+    /* Bootstrapのdanger色 */
+}
+
+/* エラーがない場合は空白を保持 */
+.error-container:empty {
+    display: block;
+    /* 空でも高さを維持 */
+}
+
+/* プレースホルダーの色 */
+input::placeholder,
+textarea::placeholder {
+    color: #CCCCCC;
+}
+
+/* 入力フィールド共通 */
+input[type="text"],
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    /* margin-bottom: 20px; */
+    font-size: 14px;
+}
+
+.image-preview {
+    margin-top: 10px 0;
+    width: 374px;
+    /* プレビューエリアの幅 */
+    height: auto;
+    /* プレビューエリアの高さ */
+    /* border: 1px dashed #ccc; */
+    /* 点線のボーダー */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    position: relative;
+}
+
+.image-preview img {
+    max-width: 100%;
+    /* 横幅を最大100%に調整 */
+    max-height: 100%;
+    /* 高さを最大100%に調整 */
+    object-fit: contain;
+    /* 画像を収める */
+}
+
+/* テキストエリア */
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* ファイルアップロード */
+input[type="file"] {
+    display: block;
+    /* margin-bottom: 20px; */
+    font-size: 14px;
+}
+
+/* 季節チェックボックス全体 */
+.season-checkbox-group {
+    display: flex;
+    gap: 20px;
+    /* 各チェックボックスの間隔 */
+    margin-top: 10px;
+}
+
+/* チェックボックスのラベル */
+.season-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* 円と季節名の間隔 */
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+/* 見えないチェックボックス */
+.season-label input[type="checkbox"] {
+    display: none;
+}
+
+/* 円形のデザイン */
+.season-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px; /* 円の直径 */
+    height: 20px; /* 円の直径 */
+    border: 1px solid #4B4B4B; /* 円の枠線 */
+    border-radius: 50%; /* 円形にする */
+    background-color: #FFF;/* 背景色 */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+}
+
+/* チェックマークのデザイン */
+.season-circle::after {
+    /* content: "✔️"; */
+    content: "✓";
+    /* チェックマーク */
+    font-size: 14px;
+    /* チェックマークのサイズ */
+    color: white;
+    /* チェックマークの色 */
+    display: none;
+    /* 初期状態では非表示 */
+    position: absolute;
+}
+
+/* チェックされたときのデザイン */
+.season-label input[type="checkbox"]:checked+.season-circle {
+    background: #4B4B4B;
+    /* チェックされた時の背景色 */
+    border-color: #4B4B4B;
+    /* チェックされた時の枠線色 */
+}
+
+/* チェックされた時に✔️を表示 */
+.season-label input[type="checkbox"]:checked+.season-circle::after {
+    display: block;
+}
+
+/* チェックされたときの季節名デザイン */
+.season-label input[type="checkbox"]:checked+.season-circle+.season-name {
+    color: #4B4B4B;
+    /* 選択済み文字色 */
+    font-weight: 300;
+    /* 選択時の文字を強調 */
+}
+
+/* 季節名のデザイン（初期状態） */
+.season-name {
+    color: #4B4B4B;
+    /* 季節名の文字色 */
+    font-size: 14px;
+    /* 季節名のフォントサイズ */
+}
+
+/* ボタン配置（左右逆に） */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* ボタン間の間隔 */
+    margin-top: 20px;
+    flex-direction: row-reverse;
+    /* ボタンの順序を逆にする */
+}
+/* ボタン */
+.register-btn,
+.back-btn {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+/* 登録ボタン */
+.register-btn {
+    background-color: #FBC02D;
+    color: #4B4B4B;
+    border: none;
+}
+
+.register-btn:hover {
+    background-color: #E5A917;
+}
+
+/* 戻るボタン */
+.back-btn {
+    background-color: #CCCCCC;
+    color: #333333;
+}
+
+.back-btn:hover {
+    background-color: #B3B3B3;
+}

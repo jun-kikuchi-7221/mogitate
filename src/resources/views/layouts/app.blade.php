@@ -27,6 +27,9 @@
     <main>
         @yield('content')
     </main>
+    
+    <!-- JavaScriptセクション -->
+    @yield('scripts')
 </body>
 
 </html>

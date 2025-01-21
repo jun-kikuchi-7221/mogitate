@@ -11,32 +11,43 @@ class ProductController extends Controller
     // 商品一覧、検索、詳細、削除のロジックを管理します。
     public function index(Request $request)
     {
-        // ソート順を取得
-        $sortDirection = $request->input('sort', 'asc'); // デフォルト値を 'asc' に設定
+        $query = Product::query();
 
-        // ソート順を検証
-        if (!in_array($sortDirection, ['asc', 'desc'])) {
-            $sortDirection = 'asc'; // 不正な値の場合はデフォルトに戻す
+        // 検索機能
+        $search = trim($request->input('search'));
+        if (!empty($search)) {
+            $query->where('name', 'like', '%' . $search . '%');
         }
 
-        // データベースから商品を取得
-        $products = Product::orderBy('price', $sortDirection)->paginate(6);
-        return view('index', compact('products'));
+        // 並び替え機能
+        $sort = $request->input('sort');
+        if ($sort === 'asc' || $sort === 'desc') {
+            $query->orderBy('price', $sort);
+        }
+
+        // データ取得とページネーション
+        $products = $query->paginate(6);
+
+        return view('index', compact('products', 'search'));
     }
 
     public function search(Request $request)
     {
         $query = Product::query();
 
+        // 商品名で検索（部分一致）
         if ($request->filled('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+            $query->where('name', 'like', '%' . $request->input('search') . '%');
         }
 
-        $sortDirection = $request->input('sort', 'asc'); // デフォルトを 'asc' に設定
+        // 価格順で並び替え
+        if ($request->filled('sort')) {
+            $sortOrder = $request->input('sort') === 'asc' ? 'asc' : 'desc';
+            $query->orderBy('price', $sortOrder);
+        }
 
-        $products = Product::orderBy('price', $sortDirection)
-        ->paginate(6)
-        ->withQueryString(); // 現在のクエリ文字列を維持
+        // ページネーションと検索結果を取得
+        $products = $query->paginate(6)->appends($request->query());
 
         return view('index', compact('products', 'request'));
     }

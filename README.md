@@ -42,7 +42,7 @@ Laravel 環境構築
     7.シーディングの実行
     php artisan db:seed
 
-## 使用技術
+## 使用技術(実行環境)
 
     ・PHP 7.4.9
     ・Laravel Framework 8.83.8
