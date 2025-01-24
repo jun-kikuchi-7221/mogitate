@@ -15,7 +15,7 @@
         @csrf
 
         <!-- 商品名 -->
-        <div>
+        <div class="name-group">
             <label for="name">商品名 <span class="required-label">必須</span></label>
             {{-- <label for="name">商品名 <span class="text-danger">必須</span></label> --}}
             <input type="text" id="name" name="name" placeholder="商品名を入力" value="{{ old('name') }}">
@@ -27,7 +27,7 @@
         </div>
 
         <!-- 値段 -->
-        <div>
+        <div class="price-group">
             <label for="price">値段 <span class="required-label">必須</span></label>
             <input type="text" id="price" name="price" placeholder="値段を入力" value="{{ old('price') }}">
             <!-- エラーメッセージ -->
@@ -36,12 +36,6 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="error-container">
-                @error('price')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
         </div>
 
         <!-- 商品画像 -->
@@ -59,8 +53,6 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            
-
         </div>
 
         <!-- 季節 -->

@@ -1,0 +1,245 @@
+/* 全体の背景色を設定 */
+body {
+    background-color: #F8F8F8;
+    margin: 0;
+    /* ページ全体の余白を削除 */
+    padding: 0;
+}
+/* public/css/detail.css */
+/* .detail-container {
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+} */
+.detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+    /* padding: 20px; */
+    font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
+    color: #4B4B4B;
+    background-color: #f8f8f8;
+    /* border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+/* .detail-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+} */
+.product {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    /* 商品リストとフォームの間隔 */
+    color: #4B4B4B;
+}
+
+.product-link {
+    color: #0085FF;
+    text-decoration: none;
+}
+
+.product-link:hover {
+    text-decoration: underline;
+}
+
+.product-separator {
+    margin: 0 8px;
+    color: #4B4B4B;
+}
+
+.product-current {
+    color: #4B4B4B;
+    font-weight: bold;
+}
+
+
+/* 商品情報全体を左右並びに配置 */
+.detail-header {
+    display: flex;
+    align-items: flex-start;
+    /* 縦の基準を揃える */
+    gap: 40px;
+    /* 画像と入力欄の間隔 */
+}
+
+/* 商品画像のサイズ調整 */
+.detail-header img {
+    width: 375px;
+    height: 280px;
+    object-fit: cover;
+    /* 画像の比率を維持 */
+}
+
+/* 商品情報（右側）を縦並び */
+.detail-header .form-group {
+    margin-bottom: 20px;
+}
+
+/* 季節チェックボックス */
+.season-group {
+    display: flex;
+    gap: 50px;
+    /* チェックボックスの間隔 */
+}
+
+.season-group label {
+    display: flex;
+    align-items: center;
+    /* チェックボックスとラベルを中央揃え */
+    gap: 8px;
+    /* チェックボックスとラベルの間隔 */
+}
+
+.season-group input[type="checkbox"] {
+    appearance: none;
+    /* デフォルトのチェックボックスデザインを削除 */
+    width: 20px;
+    height: 20px;
+    border: 1px solid #4B4B4B;
+    border-radius: 50%;
+    /* 円形にする */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #FFFFFF;
+    position: relative;
+    /* ✓を配置するため */
+}
+
+.season-group input[type="checkbox"]:checked {
+    background-color: #4B4B4B;
+    /* チェック時の背景色 */
+}
+
+.season-group input[type="checkbox"]:checked::after {
+    content: "✓";
+    /* ✓ を表示 */
+    position: absolute;
+    top: 50%;
+    /* 垂直中央に配置 */
+    left: 50%;
+    /* 水平中央に配置 */
+    transform: translate(-50%, -50%);
+    /* 完全に中央に調整 */
+    color: #FFFFFF;
+    /* ✓ を白色に */
+    font-size: 14px;
+    /* ✓ のサイズ */
+}
+
+.form-group {
+    width: 390px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.description {
+    display: block;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 300;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.form-group textarea {
+    width: 800PX;
+    height: 160px;
+    resize: none;
+}
+
+.form-group input[type="file"] {
+    padding: 0;
+    border: none;
+}
+
+/* .preview-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 4px;
+} */
+
+
+.season-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* ボタン間の間隔 */
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    width: 200px;
+    height: 50px;
+    background-color: #f5c800;
+    color: #4B4B4B;
+}
+
+.btn-primary:hover {
+    background-color: #e6be00;
+}
+
+.btn-danger {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #e60000;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    color: #ff4d4d;
+}
+
+.icon-button:hover {
+    color: #e60000;
+}
+
+.detail-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}

@@ -51,59 +51,37 @@ body {
 .search-section {
     display: flex;
     flex-direction: column;
-    /* 縦並びに変更 */
     gap: 15px;
-    /* 各要素間の間隔を設定 */
     max-width: 240px;
-    /* セクションの幅を制限 */
 }
 
-/* 共通スタイル: デフォルトのフォント色 */
+/* 共通スタイル */
 input[type="text"],
 select {
-    color: #000;
-    /* 初期状態の文字色（黒） */
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
+    font-size: 14px;
+    color: #E0DFDE; /* 初期状態の文字色（プレースホルダーと一致） */
 }
 
-/* input: 入力があった場合のフォント色 */
-input[type="text"]:not(:placeholder-shown) {
-    color: #007bff;
-    /* 入力がある場合の文字色（青） */
+/* プレースホルダーの色 */
+input::placeholder {
+    color: #E0DFDE;
 }
 
-/* select: フォーカスまたは選択がある場合のフォント色 */
+/* 入力ボックスに入力があった場合の文字色 */
+input[type="text"]:not(:placeholder-shown),
 select:focus,
 select:valid {
     color: #4B4B4B;
-    /* 選択された場合の文字色（青） */
 }
-
-/* プレースホルダーや初期値のスタイル */
-input::placeholder {
-    color: #aaa;
-    /* プレースホルダー文字色（薄い灰色） */
-}
-
-select option[value=""] {
-    color: #aaa;
-    /* 初期の未選択状態の文字色 */
-}
-
-
-
-
 
 /* input ボックス */
 .search-section input[type="text"] {
     width: 240px;
-    /* 入力ボックスの幅を240pxに設定 */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 20px;
-    /* 両端を半円形にする */
     outline: none;
-    font-size: 14px;
-    color: #E0DFDE;
     margin-bottom: 20px;
 }
 
@@ -116,7 +94,7 @@ select option[value=""] {
     border: none;
     border-radius: 5px;
     margin-bottom: 30px;
-    font-family: Hiragino Kaku Gothic Pro;
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -129,49 +107,38 @@ select option[value=""] {
 
 /* ラベルとセレクトボックス */
 .search-section label {
-    font-family: Hiragino Kaku Gothic Pro;
+    font-family: "Hiragino Kaku Gothic Pro", sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: #4B4B4B;
     margin-bottom: 10px;
 }
 
-/* 並び替えドロップダウン */
-.search-select{
+/* select ドロップダウンのスタイル */
+.search-select {
     margin-top: 20px;
     width: 240px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
     color: #E0DFDE;
     margin-bottom: 10px;
+    appearance: none; /* ブラウザのデフォルトスタイルを無効化 */
+    background-color: transparent;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M4 0l3 3 3-3z" fill="%23BEB1A6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 18px;
+    background-size: 30px;
 }
 
-select,
-option {
-    color: inherit;
-    /* 親要素の色を継承 */
-    background-color: inherit;
-    /* 背景色を継承 */
+/* option スタイル */
+select option[value=""] {
+    color: #E0DFDE; /* プレースホルダー用のオプション */
 }
 
-/* デフォルトのプレースホルダー用オプション */
-.placeholder-option {
-    color: #E0DFDE;
-    /* 薄い色 */
-}
-
-/* 通常のオプション */
-.normal-option {
-    color: #4B4B4B;
-    /* 濃い色 */
-}
-
-/* <select>のスタイルを上書き（ブラウザの影響を排除） */
-select {
-    color: inherit;
-    /* 全体的な文字色を継承 */
+select option {
+    color: #4B4B4B; /* 通常のオプション */
 }
 
 /* タグ表示 */
@@ -184,9 +151,9 @@ select {
     align-items: center;
     /* background-color: #fbc02d; */
     color: #4B4B4B;
-    padding: 6px 10px;
+    padding: 10px 10px;
     border: 1px solid #F5C800;
-    border-radius: 15px;
+    border-radius: 20px;
     font-size: 14px;
     font-weight: 300;
     margin-right: 10px;

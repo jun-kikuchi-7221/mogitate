@@ -57,17 +57,17 @@
 
         <!-- 商品一覧 -->
         <div class="product-list">
-        @foreach ($products as $product)
-            <div class="product">
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                <!-- 商品名と価格を横並びに -->
-                <div class="product-info">
-                    <h2>{{ $product->name }}</h2>
-                    <p>¥{{ number_format($product->price) }}</p>
-                </div>
-            </div>
-        @endforeach
-        </div>
+            @foreach ($products as $product)
+                <a href="{{ route('products.show', $product->id) }}" class="product">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    <!-- 商品名と価格を横並びに -->
+                    <div class="product-info">
+                        <h2>{{ $product->name }}</h2>
+                        <p>¥{{ number_format($product->price) }}</p>
+                    </div>
+                </a>
+    @endforeach
+</div>
     </div>
 
     <!-- ページネーション -->

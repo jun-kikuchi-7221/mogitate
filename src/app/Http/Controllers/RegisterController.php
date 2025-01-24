@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\register;
+use App\Http\Requests\RegisterRequest;
 use App\Models\Product;
 
 class RegisterController extends Controller
@@ -14,14 +14,20 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    public function store(Register $request)
+    public function store(RegisterRequest $request)
     {
         // バリデーション済みデータを取得
         $validated = $request->validated();
 
         // 商品画像の保存
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('images', 'public');
+            // $path = $request->file('image')->store('images', 'public');
+            // 元のファイル名を取得し、不正な文字を取り除く
+            $originalName = $request->file('image')->getClientOriginalName();
+            $safeName = preg_replace('/[^a-zA-Z0-9_\.\-]/', '_', $originalName);
+
+            // ファイルを指定した名前で保存
+            $path = $request->file('image')->storeAs('images', $safeName, 'public');
             // $validated['image'] = str_replace('public/', 'storage/', $path);
             $validated['image'] = $path; // ここでそのまま保存
         }
@@ -29,7 +35,9 @@ class RegisterController extends Controller
         // データベースへ保存
         Product::create($validated);
 
-        return redirect()->route('products.index')->with('success', '商品が登録されました！');
+        // return redirect()->route('products.index')->with('success', '商品が登録されました！');
+        return redirect()->route('products.index');
+
     }
 }
 

@@ -113,16 +113,16 @@ textarea {
     /* 点線のボーダー */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     overflow: hidden;
     background-color: #f8f8f8;
     position: relative;
 }
 
 .image-preview img {
-    max-width: 100%;
+    width: 100%;
     /* 横幅を最大100%に調整 */
-    max-height: 100%;
+    height: 100%;
     /* 高さを最大100%に調整 */
     object-fit: contain;
     /* 画像を収める */
