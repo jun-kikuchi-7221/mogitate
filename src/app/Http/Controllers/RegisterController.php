@@ -26,7 +26,7 @@ class RegisterController extends Controller
             $originalName = $request->file('image')->getClientOriginalName();
             $safeName = preg_replace('/[^a-zA-Z0-9_\.\-]/', '_', $originalName);
             // ファイルを指定した名前で保存
-            $path = $request->file('image')->storeAs('images', $safeName, 'public');
+            $path = $request->file('image')->storeAs('products', $safeName, 'public');
             $validated['image'] = $path; // ここでそのまま保存
         }
 
