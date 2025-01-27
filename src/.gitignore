@@ -15,7 +15,7 @@ yarn-error.log
 /.vscode
 
 # Ignore all storage content by default
-/storage/*
-!/storage/app/public/images
-!/storage/framework
-!/storage/logs
+# /storage/*
+# !/storage/app/public/images
+# !/storage/framework
+# !/storage/logs
