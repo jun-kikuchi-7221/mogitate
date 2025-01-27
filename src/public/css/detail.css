@@ -1,38 +1,24 @@
 /* 全体の背景色を設定 */
 body {
     background-color: #F8F8F8;
-    margin: 0;
-    /* ページ全体の余白を削除 */
+    margin: 0;/* ページ全体の余白を削除 */
     padding: 0;
 }
-/* public/css/detail.css */
-/* .detail-container {
-    max-width: 600px;
-    margin: auto;
-    font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
-} */
+
 .detail-container {
     max-width: 800px;
     margin: 0 auto;
-    /* padding: 20px; */
     font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
     color: #4B4B4B;
     background-color: #f8f8f8;
-    /* border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
 }
 
-/* .detail-container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-} */
 .product {
     display: flex;
     align-items: center;
     font-size: 14px;
     margin-top: 50px;
-    margin-bottom: 10px;
-    /* 商品リストとフォームの間隔 */
+    margin-bottom: 10px; /* 商品リストとフォームの間隔 */
     color: #4B4B4B;
 }
 
@@ -59,18 +45,15 @@ body {
 /* 商品情報全体を左右並びに配置 */
 .detail-header {
     display: flex;
-    align-items: flex-start;
-    /* 縦の基準を揃える */
-    gap: 20px;
-    /* 画像と入力欄の間隔 */
+    align-items: flex-start; /* 縦の基準を揃える */
+    gap: 20px; /* 画像と入力欄の間隔 */
 }
 
 /* 商品画像のサイズ調整 */
 .detail-header img {
     width: 375px;
     height: 280px;
-    object-fit: cover;
-    /* 画像の比率を維持 */
+    object-fit: cover; /* 画像の比率を維持 */
 }
 
 /* 画像プレビューのスタイル */
@@ -97,52 +80,39 @@ body {
 /* 季節チェックボックス */
 .season-group {
     display: flex;
-    gap: 50px;
-    /* チェックボックスの間隔 */
+    gap: 50px; /* チェックボックスの間隔 */
 }
 
 .season-group label {
     display: flex;
-    align-items: center;
-    /* チェックボックスとラベルを中央揃え */
-    gap: 8px;
-    /* チェックボックスとラベルの間隔 */
+    align-items: center; /* チェックボックスとラベルを中央揃え */
+    gap: 8px; /* チェックボックスとラベルの間隔 */
 }
 
 .season-group input[type="checkbox"] {
-    appearance: none;
-    /* デフォルトのチェックボックスデザインを削除 */
+    appearance: none; /* デフォルトのチェックボックスデザインを削除 */
     width: 20px;
     height: 20px;
     border: 1px solid #4B4B4B;
-    border-radius: 50%;
-    /* 円形にする */
+    border-radius: 50%; /* 円形にする */
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: #FFFFFF;
-    position: relative;
-    /* ✓を配置するため */
+    position: relative; /* ✓を配置するため */
 }
 
 .season-group input[type="checkbox"]:checked {
-    background-color: #4B4B4B;
-    /* チェック時の背景色 */
+    background-color: #4B4B4B; /* チェック時の背景色 */
 }
 
 .season-group input[type="checkbox"]:checked::after {
-    content: "✓";
-    /* ✓ を表示 */
+    content: "✓"; /* ✓ を表示 */
     position: absolute;
-    top: 50%;
-    /* 垂直中央に配置 */
-    left: 50%;
-    /* 水平中央に配置 */
-    transform: translate(-50%, -50%);
-    /* 完全に中央に調整 */
-    color: #FFFFFF;
-    /* ✓ を白色に */
-    font-size: 14px;
-    /* ✓ のサイズ */
+    top: 50%; /* 垂直中央に配置 */
+    left: 50%; /* 水平中央に配置 */
+    transform: translate(-50%, -50%); /* 完全に中央に調整 */
+    color: #FFFFFF; /* ✓ を白色に */
+    font-size: 14px; /* ✓ のサイズ */
 }
 
 .form-group {
@@ -198,14 +168,6 @@ body {
     border: none;
 }
 
-/* .preview-image {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 4px;
-} */
-
-
 .season-group label {
     display: flex;
     align-items: center;
@@ -213,31 +175,26 @@ body {
 }
 
 .form-footer {
-    display: flex;/* 横並び配置 */
-    justify-content: center;/* 中央揃え */
-    align-items: center;/* 縦位置を中央揃え */
-    width: 100%;
+    display: flex; /* 横並び配置 */
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 縦位置を中央揃え */
+    width: 95%;
     gap: 20px;
-    position: relative;/* 絶対配置の基準 */
-    margin-top: 20px;/* 上に余白を追加 */
+    position: relative; /* 絶対配置の基準 */
+    margin-top: 20px; /* 上に余白を追加 */
 
 }
 
 .button-group {
-    display: flex;/* 横並びにする */
-    gap: 10px;/* ボタン間の間隔 */
+    display: flex; /* 横並びにする */
+    gap: 10px; /* ボタン間の間隔 */
 }
 
-/* .delete-form {
-    position: absolute;/* 絶対配置
-    
-} */
 
 
 .btn {
     text-decoration: none;
     display: inline-block;
-    padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
@@ -255,6 +212,19 @@ body {
 
 .btn-primary:hover {
     background-color: #e6be00;
+}
+
+.btn-primary2 {
+    width: 120px;
+    height: 31px;
+    background-color: #E0DFDE;
+    border: 1px solid #4B4B4B;
+    border-radius: 0;
+    padding-top: 5px;
+    font-family: Hiragino Kaku Gothic Pro;
+    font-size: 14px;
+    font-weight: 300;
+    color: #4B4B4B;
 }
 
 .btn-secondary {
@@ -293,9 +263,3 @@ body {
     font-size: 14px;
     margin-top: 5px;
 }
-
-/* .detail-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-} */

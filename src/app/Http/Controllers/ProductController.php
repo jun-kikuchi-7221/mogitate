@@ -8,27 +8,14 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductController extends Controller
 {
-    // 商品一覧、検索、詳細、削除のロジックを管理します。
     public function index(Request $request)
     {
         $query = Product::query();
 
-        // 検索機能
-        $search = trim($request->input('search'));
-        if (!empty($search)) {
-            $query->where('name', 'like', '%' . $search . '%');
-        }
-
-        // 並び替え機能
-        $sort = $request->input('sort');
-        if ($sort === 'asc' || $sort === 'desc') {
-            $query->orderBy('price', $sort);
-        }
-
         // データ取得とページネーション
         $products = $query->paginate(6);
 
-        return view('index', compact('products', 'search'));
+        return view('index', compact('products'));
     }
 
     public function search(Request $request)
@@ -52,17 +39,5 @@ class ProductController extends Controller
         return view('index', compact('products', 'request'));
     }
 
-    public function show($productId)
-    {
-        $product = Product::findOrFail($productId);
-        return view('show', compact('product'));
-    }
-
-    public function destroy($productId)
-    {
-        $product = Product::findOrFail($productId);
-        $product->delete();
-
-        return redirect()->route('products.index')->with('success', '商品を削除しました。');
-    }
+    
 }

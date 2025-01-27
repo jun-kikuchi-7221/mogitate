@@ -10,13 +10,7 @@
 .header {
     border: 1px solid #f4f4f4;
     background: white;
-    /* display: flex;
-    justify-content: center;
-    /* 水平方向に中央揃え */
-    /* align-items: left; */
-    /* 垂直方向に中央揃え */
-    height: 53px;
-    /* headerの高さを指定 */
+    height: 53px; /* headerの高さを指定 */
     padding-left: 40px;
 
 

@@ -24,18 +24,25 @@ class DetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0|max:10000',
-            'seasons' => 'required|array|min:1',
-            'description' => 'required|string|max:120',
-            'image' => 'nullable|file|mimes:jpeg,png',
+            'name' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'between:0,10000'],
+            'seasons' => ['required','array'],
+            'description' => ['required', 'string', 'max:120'],
+            'product_image' => ['required', 'image', 'mimes:png,jpeg'],
+            'product_image' => [
+                function ($attribute, $value, $fail) {
+                    if (!$this->hasFile('product_image') && !$this->input('current_image')) {
+                    $fail('商品画像を登録してください');
+                }
+            },
+        ],
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => '商品名を入力してください',
+            'name.required' => '商品名を入力してくださいね',
             'price.required' => '値段を入力してください',
             'price.numeric' => '数値で入力してください',
             'price.min' => '0~10000円以内で入力してください',
@@ -43,7 +50,8 @@ class DetailRequest extends FormRequest
             'seasons.required' => '季節を選択してください',
             'description.required' => '商品説明を入力してください',
             'description.max' => '120文字以内で入力してください',
-            'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
+            'product_image.required' => '商品画像を登録してください',
+            'product_image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
         ];
     }
 }

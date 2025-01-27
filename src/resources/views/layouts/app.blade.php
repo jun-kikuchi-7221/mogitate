@@ -7,7 +7,6 @@
     <title>@yield('title', 'Mogitate')</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsMath/3.6/fonts/cmsymbol10.js"></script>
     @yield('css')
 </head>
@@ -27,7 +26,7 @@
     <main>
         @yield('content')
     </main>
-    
+
     <!-- JavaScriptセクション -->
     @yield('scripts')
 </body>

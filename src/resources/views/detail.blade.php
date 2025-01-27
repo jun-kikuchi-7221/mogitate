@@ -31,8 +31,8 @@
             <div class="image-preview-container">
                 <!-- プレビュー表示エリア -->
                 <div id="image-preview" class="image-preview">
-                    @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="商品画像">
+                     @if(old('product_image') || $product->image)
+                        <img src="{{ old('product_image') ? old('product_image') : asset('storage/' . $product->image) }}" alt="商品画像" style="width: 375px; height: 280px; object-fit: cover;">
                     @else
                         <p>ここにプレビューが表示されます</p>
                     @endif
@@ -40,11 +40,18 @@
 
                 <!-- ファイル選択ボタンとファイル名 -->
                 <div class="file-select-row">
-                    <input type="file" id="product-image" name="product_image" class="file-input" accept="image/*">
+                    <!-- 画像を選択 -->
+                    <label for="product-image" class="btn btn-primary2">ファイルを選択</label>
+                    <input type="file" id="product-image" name="product_image" class="file-input" accept="image/*" style="display: none;">
                     <span id="file-name" class="file-name">
-                        {{ $product->image ? basename($product->image) : 'ファイルが選択されていません' }}
+                    {{ old('product_image', $product->image ? basename($product->image) : '選択されていません') }}
                     </span>
+                    <!-- 現在の画像ファイル名を保持するための hidden フィールド -->
+                    <input type="hidden" name="current_image" value="{{ $product->image }}">
                 </div>
+                @error('product_image')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- 商品情報 -->
@@ -71,17 +78,19 @@
                 <div class="form-group">
                     <label>季節</label>
                     <div class="season-group">
-                        @foreach(['春', '夏', '秋', '冬'] as $season)
-                        <label>
-                            <input type="checkbox" name="seasons[]" value="{{ $season }}"
-                            {{ $product->seasons->contains('name', $season) ? 'checked' : '' }}>
-                            <span>{{ $season }}</span>
-                        </label>
+                        @foreach($allSeasons as $season)
+                            <label>
+                                <input type="checkbox" name="seasons[]" value="{{ $season->id }}"
+                                {{ old('seasons') !== null 
+                                    ? (in_array($season->id, old('seasons')) ? 'checked' : '') 
+                                    : (in_array($season->id, $product->seasons->pluck('id')->toArray()) ? 'checked' : '') }}>
+                                <span>{{ $season->name }}</span>
+                            </label>
                         @endforeach
-                        @error('seasons')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
                     </div>
+                    @error('seasons')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -117,6 +126,8 @@
 </div>
 @endsection
 
+
+
 @section('scripts')
 <script>
     document.getElementById('product-image').addEventListener('change', function(event) {
@@ -138,8 +149,8 @@
             };
             reader.readAsDataURL(file);
         } else {
-            // ファイルが選択されていない場合
-            fileNameDisplay.textContent = 'ファイルが選択されていません';
+            // ファイルが選択されていない場合、既存の画像ファイル名を表示
+            fileNameDisplay.textContent = '{{ $product->image ? basename($product->image) : "選択されていません" }}';
             preview.innerHTML = '<p>ここにプレビューが表示されます</p>';
         }
     });

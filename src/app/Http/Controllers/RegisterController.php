@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Season;
 use App\Models\Product;
 
 class RegisterController extends Controller
@@ -21,21 +22,26 @@ class RegisterController extends Controller
 
         // 商品画像の保存
         if ($request->hasFile('image')) {
-            // $path = $request->file('image')->store('images', 'public');
             // 元のファイル名を取得し、不正な文字を取り除く
             $originalName = $request->file('image')->getClientOriginalName();
             $safeName = preg_replace('/[^a-zA-Z0-9_\.\-]/', '_', $originalName);
-
             // ファイルを指定した名前で保存
             $path = $request->file('image')->storeAs('images', $safeName, 'public');
-            // $validated['image'] = str_replace('public/', 'storage/', $path);
             $validated['image'] = $path; // ここでそのまま保存
         }
 
-        // データベースへ保存
-        Product::create($validated);
+       
+        // 商品データを保存
+        $product = Product::create($validated);
 
-        // return redirect()->route('products.index')->with('success', '商品が登録されました！');
+        // 季節データを保存
+        if ($request->has('season')) {
+            // 選択された季節（名前）をIDに変換して保存
+            $seasonIds = Season::whereIn('name', $request->input('season'))->pluck('id')->toArray();
+            $product->seasons()->sync($seasonIds);
+        }
+
+
         return redirect()->route('products.index');
 
     }

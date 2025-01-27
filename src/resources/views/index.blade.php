@@ -24,7 +24,7 @@
     <div class="main-content">
         <!-- 左側: 検索フォーム -->
         <div class="search-section">
-    <form action="{{ route('products.index') }}" method="GET" class="search-form">
+    <form action="{{ route('products.search') }}" method="GET" class="search-form">
     <!-- 商品名で検索 -->
     <div class="search-item">
         <input type="text" name="search" class="search-input" placeholder="商品名で検索" value="{{ request('search') }}">

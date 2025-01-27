@@ -42,9 +42,7 @@
         <div class="form-group">
             <label for="image">商品画像 <span class="required-label">必須</span></label>
             <!-- プレビューエリア -->
-            <div id="image-preview" class="image-preview">
-                {{-- <p>ここに画像が表示されます</p> --}}
-            </div>
+            <div id="image-preview" class="image-preview"></div>
             <!-- ファイル選択ボタン -->
             <input class="form-control-file" type="file" id="image" name="image" accept="image/*">
             {{-- onchange="previewImage(event)"> --}}
@@ -53,6 +51,7 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
         </div>
 
         <!-- 季節 -->
@@ -94,7 +93,7 @@
 </div>
 @endsection
 
-@section('scripts') <!-- ここでJavaScriptを追加 -->
+@section('scripts')
 <script>
     document.getElementById('image').addEventListener('change', function(event) {
         const file = event.target.files[0]; // 選択したファイル

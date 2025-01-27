@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Season extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['name'];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_season');
+        return $this->belongsToMany(Product::class, 'product_season', 'season_id', 'product_id');
     }
     // use HasFactory;
 }
