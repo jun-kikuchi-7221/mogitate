@@ -16,4 +16,6 @@ yarn-error.log
 
 # Ignore all storage content by default
 /storage/*
-!/storage/app/public/
+!/storage/app/public/images
+!/storage/framework
+!/storage/logs

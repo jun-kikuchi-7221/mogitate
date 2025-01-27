@@ -44,7 +44,7 @@ class DetailController extends Controller
             }
             $file = $request->file('product_image');
             $originalName = $file->getClientOriginalName(); // 元のファイル名を取得
-            $path = $file->storeAs('products', $originalName, 'public'); // 元のファイル名で保存
+            $path = $file->storeAs('images', $originalName, 'public'); // 元のファイル名で保存
             $product->image = $path;
         } else {
             // 新しい画像がない場合は現在の画像を保持
