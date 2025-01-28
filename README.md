@@ -8,7 +8,9 @@ Docker ビルド
     2.DockerDesktopアプリを立ち上げる
     3.docker compose up -d --build
     ※ MacのM1チップのPCだったのでdocker-compose.ymlファイルの内容をそのままに
-    docker compose up -d --buildをすると"no matching manifest for linux/arm64/v8 in the manifest list entries"というエラーが出るので下記のようにコンテナ毎に"platform: linux/x86_64"を追記しました。
+    docker compose up -d --buildをすると"no matching manifest for linux/arm64/v8 in the 
+    manifest list entries"というエラーが出るので下記のようにコンテナ毎に"platform: linux/x86_64"
+    を追記しました。
     またファイル先頭の"version '3.8'"の記述"もあるとエラーが出て不必要だった為、削除しました。
 
     例：
